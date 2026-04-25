@@ -1,0 +1,4 @@
+title: nuna-llm-local
+description: Run an LLM locally in Docker — Ollama, ready for chat and RAG.
+url: https://chevp.github.io
+baseurl: /nuna-llm-local
