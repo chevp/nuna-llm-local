@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>nuna-llm-local — Run an LLM locally in Docker</title>
-  <meta name="description" content="Lightweight Ollama-in-Docker setup. Local LLMs on macOS, Linux, Windows — CPU or NVIDIA GPU.">
+  <title>nuna-llm-local — Run an LLM locally with Ollama</title>
+  <meta name="description" content="Lightweight native Ollama setup. Local LLMs on macOS (Metal), Linux (CUDA), Windows. One-liner install.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -149,51 +149,51 @@
   <!-- Hero -->
   <section class="max-w-4xl mx-auto px-6 pt-20 pb-12 text-center">
     <div class="flex justify-center gap-2 mb-6 flex-wrap">
-      <span class="pill"><span class="material-symbols-outlined text-sm">deployed_code</span> Docker</span>
       <span class="pill"><span class="material-symbols-outlined text-sm">smart_toy</span> Ollama</span>
-      <span class="pill green"><span class="material-symbols-outlined text-sm">verified</span> Dev/Prod parity</span>
+      <span class="pill green"><span class="material-symbols-outlined text-sm">bolt</span> Metal &amp; CUDA</span>
+      <span class="pill"><span class="material-symbols-outlined text-sm">terminal</span> One-liner install</span>
     </div>
     <h2 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-      <span class="gradient-text">Run an LLM locally.<br>In Docker. No surprises.</span>
+      <span class="gradient-text">Run an LLM locally.<br>Native, fast, simple.</span>
     </h2>
     <p class="text-slate-300 text-xl max-w-2xl mx-auto mb-4">
-      One <code class="mono text-arctic-300">docker compose up</code>. Persistent models. CPU or GPU.
+      One <code class="mono text-arctic-300">curl … | sh</code>. Metal on Apple Silicon, CUDA on NVIDIA. Persistent models in your home.
     </p>
     <p class="text-slate-400 text-base max-w-2xl mx-auto mb-8">
-      Same container locally and on AWS &mdash; the model you debug is the model that ships. macOS, Linux and Windows supported. NVIDIA GPU optional.
+      Lightweight Ollama setup &mdash; no Docker, no container overhead. macOS, Linux and Windows. Bundle the installer in your Electron app or use it standalone.
     </p>
     <div class="flex items-center justify-center gap-3 flex-wrap">
-      <a href="#quickstart" class="bg-arctic-600 hover:bg-arctic-500 text-white font-semibold px-6 py-3 rounded-lg transition-colors hover-glow">Try it in 2 minutes</a>
+      <a href="#quickstart" class="bg-arctic-600 hover:bg-arctic-500 text-white font-semibold px-6 py-3 rounded-lg transition-colors hover-glow">Try it in 60 seconds</a>
       <a href="https://github.com/chevp/nuna-llm-local" target="_blank" class="glass hover-glow text-slate-200 font-medium px-6 py-3 rounded-lg transition-colors">View on GitHub</a>
     </div>
-    <p class="text-slate-600 text-xs mt-6">MIT License &middot; Run anywhere Docker runs</p>
+    <p class="text-slate-600 text-xs mt-6">MIT License &middot; Native install via brew / install.sh / Windows installer</p>
   </section>
 
   <!-- What it is -->
   <section id="what" class="max-w-4xl mx-auto px-6 py-16">
     <h2 class="text-2xl md:text-3xl font-bold text-center mb-3 gradient-text">What you get</h2>
-    <p class="text-slate-400 text-center mb-10">A minimal, opinionated Ollama-in-Docker setup &mdash; ready for chat <em>and</em> RAG.</p>
+    <p class="text-slate-400 text-center mb-10">A minimal, opinionated Ollama setup &mdash; ready for chat <em>and</em> RAG.</p>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
       <div class="card glass rounded-xl p-6">
         <div class="relative z-10">
           <span class="material-symbols-outlined text-arctic-400 text-3xl mb-3 block">bolt</span>
-          <h3 class="font-semibold text-slate-100 mb-2">Single command</h3>
-          <p class="text-slate-400 text-sm">Copy <code class="mono text-arctic-300">.env.example</code>, run <code class="mono text-arctic-300">docker compose up -d</code>. Healthcheck included, restarts automatically.</p>
-        </div>
-      </div>
-      <div class="card glass rounded-xl p-6">
-        <div class="relative z-10">
-          <span class="material-symbols-outlined text-arctic-400 text-3xl mb-3 block">database</span>
-          <h3 class="font-semibold text-slate-100 mb-2">Persistent models</h3>
-          <p class="text-slate-400 text-sm">Models live in a named Docker volume. <code class="mono text-arctic-300">compose down</code> keeps them; <code class="mono text-arctic-300">down -v</code> wipes them on purpose.</p>
+          <h3 class="font-semibold text-slate-100 mb-2">One command</h3>
+          <p class="text-slate-400 text-sm">Pipe <code class="mono text-arctic-300">install.sh</code> into <code class="mono text-arctic-300">sh</code>. Installs Ollama, starts the service, pulls default models. Idempotent &mdash; safe to re-run.</p>
         </div>
       </div>
       <div class="card glass rounded-xl p-6">
         <div class="relative z-10">
           <span class="material-symbols-outlined text-arctic-400 text-3xl mb-3 block">memory</span>
-          <h3 class="font-semibold text-slate-100 mb-2">RAG-ready</h3>
-          <p class="text-slate-400 text-sm">Two slots warm by default &mdash; one chat model, one embedding model. <code class="mono text-arctic-300">setup-rag.sh</code> pulls both.</p>
+          <h3 class="font-semibold text-slate-100 mb-2">GPU by default</h3>
+          <p class="text-slate-400 text-sm">Metal on Apple Silicon, CUDA on NVIDIA &mdash; auto-detected. 7B&ndash;13B models run in seconds, not minutes.</p>
+        </div>
+      </div>
+      <div class="card glass rounded-xl p-6">
+        <div class="relative z-10">
+          <span class="material-symbols-outlined text-arctic-400 text-3xl mb-3 block">extension</span>
+          <h3 class="font-semibold text-slate-100 mb-2">Submodule-friendly</h3>
+          <p class="text-slate-400 text-sm">Drop the repo into your Electron app as a git submodule. Scripts have no CWD assumptions and re-run safely on every launch.</p>
         </div>
       </div>
     </div>
@@ -202,46 +202,53 @@
   <!-- Quick Start -->
   <section id="quickstart" class="max-w-3xl mx-auto px-6 py-16">
     <h2 class="text-2xl md:text-3xl font-bold text-center mb-3 gradient-text">Quick start</h2>
-    <p class="text-slate-400 text-center mb-10">From zero to a working LLM in three commands.</p>
+    <p class="text-slate-400 text-center mb-10">From zero to a working LLM in one command.</p>
 
     <div class="space-y-6">
       <!-- Step 1 -->
       <div class="glass rounded-xl p-6">
         <div class="flex items-center gap-3 mb-3">
           <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-blue-500/20 text-blue-400 text-base font-bold">1</span>
-          <h3 class="font-semibold text-slate-100">Clone &amp; configure</h3>
+          <h3 class="font-semibold text-slate-100">Install (macOS / Linux)</h3>
         </div>
-        <pre class="code-block"><button class="copy-btn" data-copy="git clone https://github.com/chevp/nuna-llm-local.git
-cd nuna-llm-local
-cp .env.example .env">copy</button><span class="kw">git</span> clone https://github.com/chevp/nuna-llm-local.git
-<span class="kw">cd</span> nuna-llm-local
-<span class="kw">cp</span> .env.example .env</pre>
+        <pre class="code-block"><button class="copy-btn" data-copy="curl -fsSL https://raw.githubusercontent.com/chevp/nuna-llm-local/main/install.sh | sh">copy</button><span class="kw">curl</span> -fsSL https://raw.githubusercontent.com/chevp/nuna-llm-local/main/install.sh | <span class="kw">sh</span></pre>
+        <p class="text-slate-500 text-xs mt-3">Installs Ollama via brew (macOS) or the official installer (Linux), starts the service, pulls <code class="mono text-arctic-300">mistral:7b-instruct-q4_K_M</code> + <code class="mono text-arctic-300">nomic-embed-text</code>.</p>
       </div>
 
       <!-- Step 2 -->
       <div class="glass rounded-xl p-6">
         <div class="flex items-center gap-3 mb-3">
-          <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-orange-500/20 text-orange-400 text-base font-bold">2</span>
-          <h3 class="font-semibold text-slate-100">Start the container</h3>
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-orange-500/20 text-orange-400 text-base font-bold">1b</span>
+          <h3 class="font-semibold text-slate-100">Install (Windows, PowerShell)</h3>
         </div>
-        <pre class="code-block mb-3"><button class="copy-btn" data-copy="docker compose up -d">copy</button><span class="cmt"># CPU (default — works on macOS, Linux, Windows)</span>
-<span class="kw">docker</span> compose up -d</pre>
-        <pre class="code-block"><button class="copy-btn" data-copy="docker compose -f docker-compose.yml -f docker-compose.gpu.yml up -d">copy</button><span class="cmt"># Linux + NVIDIA GPU</span>
-<span class="kw">docker</span> compose -f docker-compose.yml -f docker-compose.gpu.yml up -d</pre>
+        <pre class="code-block"><button class="copy-btn" data-copy="irm https://raw.githubusercontent.com/chevp/nuna-llm-local/main/install.ps1 | iex">copy</button><span class="kw">irm</span> https://raw.githubusercontent.com/chevp/nuna-llm-local/main/install.ps1 | <span class="kw">iex</span></pre>
+        <p class="text-slate-500 text-xs mt-3">Downloads the Ollama Windows installer, runs it silently, then pulls the same default models. Accept the UAC prompt.</p>
       </div>
 
       <!-- Step 3 -->
       <div class="glass rounded-xl p-6">
         <div class="flex items-center gap-3 mb-3">
-          <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-green-500/20 text-green-400 text-base font-bold">3</span>
-          <h3 class="font-semibold text-slate-100">Pull a model &amp; talk to it</h3>
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-green-500/20 text-green-400 text-base font-bold">2</span>
+          <h3 class="font-semibold text-slate-100">Talk to it</h3>
         </div>
-        <pre class="code-block mb-3"><button class="copy-btn" data-copy="./scripts/pull-model.sh mistral:7b-instruct-q4_K_M
-./scripts/test-prompt.sh mistral:7b-instruct-q4_K_M 'Was ist Docker?'">copy</button>./scripts/pull-model.sh <span class="str">mistral:7b-instruct-q4_K_M</span>
-./scripts/test-prompt.sh <span class="str">mistral:7b-instruct-q4_K_M</span> <span class="str">'Was ist Docker?'</span></pre>
-        <pre class="code-block"><button class="copy-btn" data-copy="curl http://localhost:11434/api/generate -d '{&quot;model&quot;:&quot;mistral:7b-instruct-q4_K_M&quot;,&quot;prompt&quot;:&quot;Hello&quot;,&quot;stream&quot;:false}'">copy</button><span class="cmt"># Or hit the HTTP API directly</span>
+        <pre class="code-block mb-3"><button class="copy-btn" data-copy="ollama run mistral:7b-instruct-q4_K_M">copy</button><span class="cmt"># Interactive shell</span>
+<span class="kw">ollama</span> run <span class="str">mistral:7b-instruct-q4_K_M</span></pre>
+        <pre class="code-block"><button class="copy-btn" data-copy="curl http://localhost:11434/api/generate -d '{&quot;model&quot;:&quot;mistral:7b-instruct-q4_K_M&quot;,&quot;prompt&quot;:&quot;Hello&quot;,&quot;stream&quot;:false}'">copy</button><span class="cmt"># Or hit the HTTP API</span>
 <span class="kw">curl</span> http://localhost:11434/api/generate \
   -d <span class="str">'{"model":"mistral:7b-instruct-q4_K_M","prompt":"Hello","stream":false}'</span></pre>
+      </div>
+    </div>
+
+    <div class="glass rounded-xl p-6 mt-6">
+      <div class="flex items-start gap-3">
+        <span class="material-symbols-outlined text-arctic-400">extension</span>
+        <div class="flex-1">
+          <p class="text-slate-200 font-medium mb-1">Embedding it in another project?</p>
+          <p class="text-slate-400 text-sm mb-3">Add the repo as a git submodule and call the installer from your parent project (e.g. an Electron app's first-launch hook):</p>
+          <pre class="code-block"><button class="copy-btn" data-copy="git submodule add https://github.com/chevp/nuna-llm-local vendor/nuna-llm-local
+./vendor/nuna-llm-local/install.sh">copy</button><span class="kw">git</span> submodule add https://github.com/chevp/nuna-llm-local vendor/nuna-llm-local
+./vendor/nuna-llm-local/install.sh</pre>
+        </div>
       </div>
     </div>
   </section>
@@ -249,7 +256,10 @@ cp .env.example .env">copy</button><span class="kw">git</span> clone https://git
   <!-- Models -->
   <section id="models" class="max-w-4xl mx-auto px-6 py-16">
     <h2 class="text-2xl md:text-3xl font-bold text-center mb-3 gradient-text">Recommended models</h2>
-    <p class="text-slate-400 text-center mb-10">CPU-only on Apple Silicon &mdash; these are the ones that <em>actually</em> feel fast.</p>
+    <p class="text-slate-400 text-center mb-10">Two tiers: a snappy default set, and a heavyweight set for vision, 3D and shader work.</p>
+
+    <h3 class="text-lg font-semibold text-slate-200 mb-2">Lightweight tier &mdash; fast everywhere</h3>
+    <p class="text-slate-400 text-sm mb-4">With Metal (Apple Silicon) or CUDA (NVIDIA) these run in seconds.</p>
 
     <div class="glass rounded-xl overflow-hidden">
       <table class="w-full text-sm">
@@ -281,10 +291,72 @@ cp .env.example .env">copy</button><span class="kw">git</span> clone https://git
             <td class="px-5 py-3">~5 GB</td>
             <td class="px-5 py-3">Slightly higher quality</td>
           </tr>
+          <tr class="border-b border-slate-700/30">
+            <td class="px-5 py-3 mono text-arctic-300">llama3.1:13b-instruct-q4_K_M</td>
+            <td class="px-5 py-3">~8 GB</td>
+            <td class="px-5 py-3">Best quality on 16+ GB unified memory / 12+ GB VRAM</td>
+          </tr>
           <tr>
             <td class="px-5 py-3 mono text-arctic-300">nomic-embed-text</td>
             <td class="px-5 py-3">~270 MB</td>
             <td class="px-5 py-3">Embeddings (RAG)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="text-lg font-semibold text-slate-200 mt-10 mb-2">Heavyweight tier &mdash; vision, 3D &amp; shader work</h3>
+    <p class="text-slate-400 text-sm mb-4">For image input, glTF/JSON-graph reasoning, and GLSL/HLSL/WGSL pipelines. Realistic on Apple Silicon M-Pro/Max with 32&nbsp;GB+ unified memory, or an NVIDIA GPU with &ge;&nbsp;16&nbsp;GB VRAM.</p>
+
+    <div class="glass rounded-xl overflow-hidden">
+      <table class="w-full text-sm">
+        <thead class="border-b border-slate-700/50">
+          <tr class="text-slate-300">
+            <th class="text-left px-5 py-3 font-semibold">Model</th>
+            <th class="text-left px-5 py-3 font-semibold">Disk</th>
+            <th class="text-left px-5 py-3 font-semibold">Use case</th>
+          </tr>
+        </thead>
+        <tbody class="text-slate-400">
+          <tr class="border-b border-slate-700/30">
+            <td class="px-5 py-3 mono text-arctic-300">llama3.2-vision:11b</td>
+            <td class="px-5 py-3">~8 GB</td>
+            <td class="px-5 py-3">Vision: reference images, screenshots, diagrams, UI mockups</td>
+          </tr>
+          <tr class="border-b border-slate-700/30">
+            <td class="px-5 py-3 mono text-arctic-300">llava:13b</td>
+            <td class="px-5 py-3">~8 GB</td>
+            <td class="px-5 py-3">Vision: classic baseline, broad ecosystem support</td>
+          </tr>
+          <tr class="border-b border-slate-700/30">
+            <td class="px-5 py-3 mono text-arctic-300">qwen2.5-coder:7b</td>
+            <td class="px-5 py-3">~5 GB</td>
+            <td class="px-5 py-3">Lightweight code: fast iteration on shader &amp; pipeline snippets</td>
+          </tr>
+          <tr class="border-b border-slate-700/30">
+            <td class="px-5 py-3 mono text-arctic-300">deepseek-coder-v2:16b</td>
+            <td class="px-5 py-3">~9 GB</td>
+            <td class="px-5 py-3">MoE code mid-tier: snappy, strong on graphics &amp; build systems</td>
+          </tr>
+          <tr class="border-b border-slate-700/30 bg-blue-500/5">
+            <td class="px-5 py-3 mono text-arctic-300">qwen2.5-coder:32b</td>
+            <td class="px-5 py-3">~20 GB</td>
+            <td class="px-5 py-3">Top open coder: GLSL/HLSL/WGSL, Three.js, WebGPU, Vulkan, glTF</td>
+          </tr>
+          <tr class="border-b border-slate-700/30">
+            <td class="px-5 py-3 mono text-arctic-300">deepseek-r1:32b</td>
+            <td class="px-5 py-3">~20 GB</td>
+            <td class="px-5 py-3">Reasoning: vertex transforms, BRDF math, lighting derivations</td>
+          </tr>
+          <tr class="border-b border-slate-700/30">
+            <td class="px-5 py-3 mono text-arctic-300">mixtral:8x7b</td>
+            <td class="px-5 py-3">~26 GB</td>
+            <td class="px-5 py-3">MoE generalist: broad knowledge, fast for its size</td>
+          </tr>
+          <tr>
+            <td class="px-5 py-3 mono text-arctic-300">llama3.3:70b-instruct-q4_K_M</td>
+            <td class="px-5 py-3">~43 GB</td>
+            <td class="px-5 py-3">Top-tier generalist: architecture &amp; design discussions</td>
           </tr>
         </tbody>
       </table>
@@ -295,7 +367,7 @@ cp .env.example .env">copy</button><span class="kw">git</span> clone https://git
         <span class="material-symbols-outlined text-arctic-400">info</span>
         <div>
           <p class="text-slate-200 font-medium mb-1">Want a basic RAG stack?</p>
-          <p class="text-slate-400 text-sm mb-3">Pull a chat model and an embedding model in one go:</p>
+          <p class="text-slate-400 text-sm mb-3">The default install already pulls a chat model and an embedding model. To re-pull or upgrade them:</p>
           <pre class="code-block"><button class="copy-btn" data-copy="./scripts/setup-rag.sh">copy</button>./scripts/setup-rag.sh</pre>
         </div>
       </div>
@@ -312,15 +384,15 @@ cp .env.example .env">copy</button><span class="kw">git</span> clone https://git
         <div class="relative z-10">
           <span class="material-symbols-outlined text-arctic-400 text-3xl mb-3 block">laptop_mac</span>
           <h3 class="font-semibold text-slate-100 mb-2">macOS (Apple Silicon)</h3>
-          <p class="text-slate-400 text-sm mb-3">Native ARM64 image, no Rosetta. CPU-only inside the container &mdash; the Apple GPU is not exposed to Docker.</p>
-          <p class="text-slate-500 text-xs"><strong class="text-slate-400">Best models:</strong> q4-quantised 7B–8B.</p>
+          <p class="text-slate-400 text-sm mb-3">Metal acceleration via the Apple GPU &mdash; auto-detected by Ollama. 7B&ndash;13B-q4 models run in seconds.</p>
+          <p class="text-slate-500 text-xs"><strong class="text-slate-400">Best models:</strong> 7B-q4 default, 13B-q4 on M-Pro/Max with 32 GB+ memory.</p>
         </div>
       </div>
       <div class="card glass rounded-xl p-6">
         <div class="relative z-10">
           <span class="material-symbols-outlined text-arctic-400 text-3xl mb-3 block">dns</span>
           <h3 class="font-semibold text-slate-100 mb-2">Linux</h3>
-          <p class="text-slate-400 text-sm mb-3">Full GPU support via <code class="mono text-arctic-300">nvidia-container-toolkit</code>. Use the GPU compose override.</p>
+          <p class="text-slate-400 text-sm mb-3">CUDA acceleration via the NVIDIA driver &mdash; no toolkit setup. Just install the driver and Ollama auto-detects the GPU.</p>
           <p class="text-slate-500 text-xs"><strong class="text-slate-400">Best models:</strong> any &mdash; GPU handles 13B+ easily.</p>
         </div>
       </div>
@@ -328,7 +400,7 @@ cp .env.example .env">copy</button><span class="kw">git</span> clone https://git
         <div class="relative z-10">
           <span class="material-symbols-outlined text-arctic-400 text-3xl mb-3 block">desktop_windows</span>
           <h3 class="font-semibold text-slate-100 mb-2">Windows</h3>
-          <p class="text-slate-400 text-sm mb-3">WSL2 + Docker Desktop. NVIDIA GPU works through WSL CUDA with a current driver.</p>
+          <p class="text-slate-400 text-sm mb-3">Native Windows installer with NVIDIA GPU support out of the box. Service runs in the background after install.</p>
           <p class="text-slate-500 text-xs"><strong class="text-slate-400">Best models:</strong> CPU-only or NVIDIA, like Linux.</p>
         </div>
       </div>
@@ -347,63 +419,65 @@ cp .env.example .env">copy</button><span class="kw">git</span> clone https://git
           <span class="material-symbols-outlined faq-icon text-slate-400">add</span>
         </summary>
         <div class="mt-4 text-slate-400 text-sm space-y-2">
-          <p>Native Ollama is running. Either stop it or change the port:</p>
+          <p>Another Ollama instance is running &mdash; or a leftover Docker container from an older setup. Find and stop it:</p>
           <pre class="code-block"><span class="cmt"># macOS</span>
-brew services stop ollama
-<span class="cmt"># Or pick a different port in .env</span>
-OLLAMA_PORT=11435</pre>
+brew services list
+<span class="cmt"># Linux</span>
+systemctl status ollama
+<span class="cmt"># Or pick a different bind address</span>
+launchctl setenv OLLAMA_HOST 127.0.0.1:11435   <span class="cmt"># macOS</span></pre>
         </div>
       </details>
 
       <details class="glass rounded-xl p-5">
         <summary class="flex items-center justify-between">
-          <span class="font-medium text-slate-200"><code class="mono text-arctic-300">could not select device driver "nvidia"</code> on Linux</span>
+          <span class="font-medium text-slate-200">GPU not used (slow on Apple Silicon)</span>
           <span class="material-symbols-outlined faq-icon text-slate-400">add</span>
         </summary>
         <div class="mt-4 text-slate-400 text-sm space-y-2">
-          <p>Install <code class="mono text-arctic-300">nvidia-container-toolkit</code>:</p>
-          <pre class="code-block">curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey \
-  | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg
-curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list \
-  | sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
-sudo apt update &amp;&amp; sudo apt install -y nvidia-container-toolkit
-sudo nvidia-ctk runtime configure --runtime=docker
-sudo systemctl restart docker</pre>
-          <p>Verify with <code class="mono text-arctic-300">docker run --rm --gpus all nvidia/cuda:12.4.0-base-ubuntu22.04 nvidia-smi</code>.</p>
+          <p>While a query is running, check the processor split:</p>
+          <pre class="code-block">ollama ps
+<span class="cmt"># Should show PROCESSOR=100% GPU. If CPU, you're either on Intel Mac</span>
+<span class="cmt"># (no Metal) or running an outdated Ollama:</span>
+brew upgrade ollama</pre>
         </div>
       </details>
 
       <details class="glass rounded-xl p-5">
         <summary class="flex items-center justify-between">
-          <span class="font-medium text-slate-200">GPU not detected inside the container</span>
+          <span class="font-medium text-slate-200">GPU not detected on Linux</span>
           <span class="material-symbols-outlined faq-icon text-slate-400">add</span>
         </summary>
         <div class="mt-4 text-slate-400 text-sm space-y-2">
-          <p>Run <code class="mono text-arctic-300">docker compose exec ollama nvidia-smi</code>. If that doesn't list the GPU, the override isn't active or the host driver is missing. Check <code class="mono text-arctic-300">nvidia-smi</code> on the host first, then re-up with the GPU override.</p>
+          <p>Verify the NVIDIA driver first &mdash; no container toolkit needed:</p>
+          <pre class="code-block">nvidia-smi
+<span class="cmt"># Then check what Ollama sees:</span>
+journalctl -u ollama -n 50 | grep -i -E "cuda|gpu"</pre>
         </div>
       </details>
 
       <details class="glass rounded-xl p-5">
         <summary class="flex items-center justify-between">
-          <span class="font-medium text-slate-200">Healthcheck reports <code class="mono text-arctic-300">unhealthy</code></span>
+          <span class="font-medium text-slate-200">Service won't start</span>
           <span class="material-symbols-outlined faq-icon text-slate-400">add</span>
         </summary>
         <div class="mt-4 text-slate-400 text-sm space-y-2">
-          <p>The first 20 s is the configured <code class="mono text-arctic-300">start_period</code>. If the issue persists, look at the logs:</p>
-          <pre class="code-block">docker compose logs ollama</pre>
+          <pre class="code-block"><span class="cmt"># macOS</span>
+brew services list
+brew services restart ollama
+<span class="cmt"># Linux</span>
+sudo systemctl status ollama
+journalctl -u ollama -e</pre>
         </div>
       </details>
 
       <details class="glass rounded-xl p-5">
         <summary class="flex items-center justify-between">
-          <span class="font-medium text-slate-200">Responses feel painfully slow on CPU</span>
+          <span class="font-medium text-slate-200">Model download stalls or fails</span>
           <span class="material-symbols-outlined faq-icon text-slate-400">add</span>
         </summary>
         <div class="mt-4 text-slate-400 text-sm space-y-2">
-          <p>Expected without GPU. Switch to a smaller, quantised model:</p>
-          <pre class="code-block">./scripts/pull-model.sh llama3.2:3b
-./scripts/pull-model.sh phi3:mini</pre>
-          <p>If you're on macOS and just want speed, install Ollama natively (<code class="mono text-arctic-300">brew install ollama</code>) &mdash; it uses the Apple GPU via Metal. You lose dev/prod parity, though.</p>
+          <p>Check disk space &mdash; a 7B-q4 model is ~4 GB. Models live in your home (<code class="mono text-arctic-300">~/.ollama/models/</code>) or under <code class="mono text-arctic-300">/usr/share/ollama/.ollama/models/</code> on Linux/systemd.</p>
         </div>
       </details>
     </div>
@@ -413,7 +487,7 @@ sudo systemctl restart docker</pre>
   <footer class="border-t border-slate-800 mt-12 py-8">
     <div class="max-w-4xl mx-auto px-6 text-center text-slate-500 text-sm">
       <p>MIT License</p>
-      <p class="text-xs text-slate-600 mt-2">Built with <a href="https://ollama.com" class="hover:text-arctic-400">Ollama</a> &middot; <a href="https://docker.com" class="hover:text-arctic-400">Docker</a></p>
+      <p class="text-xs text-slate-600 mt-2">Built with <a href="https://ollama.com" class="hover:text-arctic-400">Ollama</a></p>
     </div>
   </footer>
 
