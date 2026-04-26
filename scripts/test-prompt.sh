@@ -3,7 +3,7 @@
 # Usage: ./scripts/test-prompt.sh [model] [prompt]
 set -euo pipefail
 MODEL="${1:-mistral:7b-instruct-q4_K_M}"
-PROMPT="${2:-Erkläre Docker in einem Satz.}"
+PROMPT="${2:-Erkläre Ollama in einem Satz.}"
 PORT="${OLLAMA_PORT:-11434}"
 
 if ! command -v jq >/dev/null 2>&1; then
